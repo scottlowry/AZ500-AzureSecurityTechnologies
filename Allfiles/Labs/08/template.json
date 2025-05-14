@@ -1,5 +1,5 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "adminUsername": {
@@ -56,7 +56,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2018-12-01",
             "name": "[parameters('networkSecurityGroups_Srv_Jump_nsg_name')]",
-            "location": "eastus",
+            "location": "westus2",
             "properties": {
                 "provisioningState": "Succeeded",
                 "resourceGuid": "0841b5b1-e64b-4b96-8cca-c5672008692a",
@@ -209,7 +209,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2018-12-01",
             "name": "[parameters('networkSecurityGroups_Srv_Work_nsg_name')]",
-            "location": "eastus",
+            "location": "westus2",
             "properties": {
                 "provisioningState": "Succeeded",
                 "resourceGuid": "9ff0018d-e779-47c4-a4a6-39b65646f5bf",
@@ -342,7 +342,7 @@
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2018-12-01",
             "name": "[parameters('publicIPAddresses_Srv_Jump_PIP_name')]",
-            "location": "eastus",
+            "location": "westus2",
             "sku": {
                 "name": "Basic",
                 "tier": "Regional"
@@ -361,7 +361,7 @@
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2018-12-01",
             "name": "[parameters('virtualNetworks_Test_FW_VN_name')]",
-            "location": "eastus",
+            "location": "westus2",
             "properties": {
                 "provisioningState": "Succeeded",
                 "resourceGuid": "f1bd757d-8254-44ee-86a9-3dd9a4ced2ed",
@@ -410,7 +410,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2018-10-01",
             "name": "[parameters('virtualMachines_Srv_Jump_name')]",
-            "location": "eastus",
+            "location": "westus2",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_srv_jump121_name'))]"
             ],
@@ -462,7 +462,7 @@
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2018-10-01",
             "name": "[parameters('virtualMachines_Srv_Work_name')]",
-            "location": "eastus",
+            "location": "westus2",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_srv_work267_name'))]"
             ],
@@ -514,7 +514,7 @@
             "type": "microsoft.devtestlab/schedules",
             "apiVersion": "2016-05-15",
             "name": "[parameters('schedules_shutdown_computevm_srv_jump_name')]",
-            "location": "eastus",
+            "location": "westus2",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_Srv_Jump_name'))]"
             ],
@@ -538,7 +538,7 @@
             "type": "microsoft.devtestlab/schedules",
             "apiVersion": "2016-05-15",
             "name": "[parameters('schedules_shutdown_computevm_srv_work_name')]",
-            "location": "eastus",
+            "location": "westus2",
             "dependsOn": [
                 "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_Srv_Work_name'))]"
             ],
@@ -626,7 +626,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2018-12-01",
             "name": "[parameters('networkInterfaces_srv_work267_name')]",
-            "location": "eastus",
+            "location": "westus2",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Test_FW_VN_name'), 'Workload-SN')]",
                 "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_Srv_Work_nsg_name'))]"
@@ -669,7 +669,7 @@
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2018-12-01",
             "name": "[parameters('networkInterfaces_srv_jump121_name')]",
-            "location": "eastus",
+            "location": "westus2",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_Srv_Jump_PIP_name'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_Test_FW_VN_name'), 'Jump-SN')]",
